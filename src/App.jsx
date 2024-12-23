@@ -19,19 +19,20 @@ function App() {
   return (
     <BrowserRouter>
       <div className="flex h-screen bg-gray-200 text-gray-800 overflow-hidden">
+
         {/* Sidebar */}
         <div className="w-[200px] fixed h-full bg-gray-800 text-white">
           <Sidebar />
         </div>
 
         {/* Right-side content */}
+
         <div className="flex flex-col ml-[200px] w-full h-screen">
           {/* Header */}
           <div>
             <Header />
           </div>
 
-          {/* Main content (below header) */}
           <div className="flex-1 overflow-auto bg-white">
             <Routes>
               {/* Dashboard */}
@@ -59,12 +60,3 @@ function App() {
 }
 
 export default App;
-
-
-{/* <div className="flex min-h-screen">
-<Sidebar/>
-<div className="flex flex-col flex-grow bg-gray-100 overflow-x-auto scrollbar-hide">
- <Header/>
- <Home/>
-</div>
-</div> */}

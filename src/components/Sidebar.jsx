@@ -60,7 +60,7 @@ const Sidebar = () => {
               Getting Started
             </div>
             <div>
-              <div class="w-[130px] h-[3px] bg-[#495569]"></div>
+              <div className="w-[130px] h-[3px] bg-[#495569]"></div>
             </div>
           </div>
           <div>

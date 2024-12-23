@@ -21,8 +21,8 @@ const Header = () => {
               placeholder="Search in Customers ( / )"
               className="pl-8 bg-[#ededf7] rounded-md
                        outline-none hover:border border-[#e5e6ef] hover:border-blue-300 
-                       placeholder:text-sm w-[350px]  hover:w-[400px]
-                       hover:ease-out duration-300"
+                       placeholder:text-xs w-[350px]  hover:w-[400px] focus:w-[400px]
+                       hover:ease-out duration-300 text-xs py-[7px]"
             />
             <GoSearch className="absolute top-1/2 left-1  transform -translate-y-1/2" />
           </div>
