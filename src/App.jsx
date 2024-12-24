@@ -48,7 +48,7 @@ function AppContent() {
           <div>
             <Header />
           </div>
-          {shouldShowListFilter &&   <ListFilter/> }
+          {shouldShowListFilter &&   <ListFilter location={location} /> }
          
 
           <div className="flex-1 overflow-auto bg-white">

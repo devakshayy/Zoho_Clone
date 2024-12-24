@@ -1,11 +1,11 @@
 import React from 'react'
+import { MdAddCard } from "react-icons/md";
+
 
 const Item = () => {
   return (
     <>
-    <div className='text-3xl flex justify-center p-4'>
-    Item Page
-    </div>
+    dfgd
     </>
    
   )
