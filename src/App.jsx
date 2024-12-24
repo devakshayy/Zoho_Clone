@@ -16,6 +16,8 @@ import Customers from "./pages/Customers";
 import Header from "./components/Header";
 import ListFilter from "./components/ListFilter";
 
+// important at the bottom don't forget to implemnt in the last
+
 function AppContent() {
 
   const location = useLocation();
@@ -35,7 +37,7 @@ function AppContent() {
       <div className="flex h-screen bg-gray-200 text-gray-800 overflow-hidden">
 
         {/* Sidebar */}
-        <div className="w-[200px] overflow-auto fixed h-full bg-gray-800 text-white">
+        <div className="w-[200px]  fixed h-full bg-gray-800 text-white">
           <Sidebar />
         </div>
 
@@ -74,7 +76,6 @@ function AppContent() {
   );
 }
 
-
 function App () {
   return (
      <BrowserRouter>
@@ -83,3 +84,7 @@ function App () {
   )
 }
 export default App;
+
+
+// don't forget to add  overflow-auto in the sidebar component
+// and adjust the padding and the scroll styiling !!!!!!!!!!! 
