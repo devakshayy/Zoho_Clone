@@ -21,7 +21,7 @@ const Sidebar = () => {
   // );
   return (
     <div
-      className="h-screen bg-[#21263c] 
+      className="min-h-screen bg-[#21263c] 
                  relative z-10  transition-all duration-300 ease-in-out 
                  flex-shrink-0  pb-10 w-[200px]"
     >
@@ -60,7 +60,7 @@ const Sidebar = () => {
               Getting Started
             </div>
             <div>
-              <div class="w-[130px] h-[3px] bg-[#495569]"></div>
+              <div className="w-[130px] h-[3px] bg-[#495569]"></div>
             </div>
           </div>
           <div>

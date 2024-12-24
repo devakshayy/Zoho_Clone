@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Home from "./pages/Home";
 import Quotes from "./pages/Quotes";
@@ -14,24 +14,43 @@ import Item from "./pages/Item";
 import ConfigureFeatureList from "./pages/ConfigureFeatureList";
 import Customers from "./pages/Customers";
 import Header from "./components/Header";
+import ListFilter from "./components/ListFilter";
 
-function App() {
+// important at the bottom don't forget to implemnt in the last
+
+function AppContent() {
+
+  const location = useLocation();
+  
+  const excludedRoutes = [
+         "/",
+         "/home",
+         "/timetracking",
+         "/reports",
+         "/advancedbilling",
+         "/configurefeaturelist"
+  ];
+
+  const shouldShowListFilter = !excludedRoutes.includes(location.pathname);
+
   return (
-    <BrowserRouter>
       <div className="flex h-screen bg-gray-200 text-gray-800 overflow-hidden">
+
         {/* Sidebar */}
-        <div className="w-[200px] fixed h-full bg-gray-800 text-white">
+        <div className="w-[200px]  fixed h-full bg-gray-800 text-white">
           <Sidebar />
         </div>
 
         {/* Right-side content */}
+
         <div className="flex flex-col ml-[200px] w-full h-screen">
           {/* Header */}
           <div>
             <Header />
           </div>
+          {shouldShowListFilter &&   <ListFilter/> }
+         
 
-          {/* Main content (below header) */}
           <div className="flex-1 overflow-auto bg-white">
             <Routes>
               {/* Dashboard */}
@@ -54,17 +73,18 @@ function App() {
           </div>
         </div>
       </div>
-    </BrowserRouter>
   );
 }
 
+function App () {
+  return (
+     <BrowserRouter>
+        <AppContent/>
+     </BrowserRouter>
+  )
+}
 export default App;
 
 
-{/* <div className="flex min-h-screen">
-<Sidebar/>
-<div className="flex flex-col flex-grow bg-gray-100 overflow-x-auto scrollbar-hide">
- <Header/>
- <Home/>
-</div>
-</div> */}
+// don't forget to add  overflow-auto in the sidebar component
+// and adjust the padding and the scroll styiling !!!!!!!!!!! 
