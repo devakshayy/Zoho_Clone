@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { PiClockClockwiseLight } from "react-icons/pi";
 import { GoSearch } from "react-icons/go";
 import { IoIosArrowDown } from "react-icons/io";
@@ -8,8 +8,16 @@ import { HiOutlineUserCircle } from "react-icons/hi2";
 import { IoSettingsOutline } from "react-icons/io5";
 import { IoApps } from "react-icons/io5";
 import { Tooltip } from "react-tooltip";
+import { SiZorin } from "react-icons/si";
+
 
 const Header = () => {
+  const [show, setShow] = useState(false);
+
+  const iconChangeHandle = () => {
+    setShow((show) => !show);
+  }
+  
   return (
     <div className="flex mt-0 ml-0 p-2 justify-between  items-center h-[48px] border border-b-1 border-[#e5e6ef] bg-[#f7f7fe]">
       <div className="flex gap-2 items-center text-black">
@@ -49,7 +57,14 @@ const Header = () => {
           }
         />
         <HiOutlineUserCircle className="w-7 h-7" />
-        <IoApps />
+         {show? <SiZorin
+                    className="transform transition-all duration-300"
+                    onMouseLeave={iconChangeHandle} /> 
+               :
+          <IoApps 
+                className="transform transition-all duration-300" 
+                onMouseEnter={iconChangeHandle} />}
+
       </div>
     </div>
   );
