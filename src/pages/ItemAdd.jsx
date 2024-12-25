@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
+import { RiAddLine } from "react-icons/ri";
+import { BiSearch } from "react-icons/bi";
+
 
 const ItemAdd = () => {
 
@@ -6,6 +9,8 @@ const ItemAdd = () => {
     const [fixedAssetChek, setfixedAssetChek] = useState(false);
     const [isFocus, setIsFocus] = useState(false);
     const [groupInputValue ,setGroupInputValue] = useState('');
+    const [isHoverd, setIsHovered] = useState(false);
+    const inputRef = useRef("");
     
     console.log(groupInputValue)
     const groupSuggestions = [
@@ -27,8 +32,8 @@ const ItemAdd = () => {
     console.log(maintainStockChek);
     console.log(fixedAssetChek);
   return (
-    <div className="bg-[#f4f5f6] flex justify-center py-2 px-40">
-       <form action="">
+    <div className="bg-[#f4f5f6] flex justify-center pt-2 pb-20 px-auto">
+       <form name="form" id="form" >
        <div className="bg-white  w-[500px] rounded-md shadow-lg">
         <div className="border-b-[1px] px-3 py-2">
             <a className="itemadd-ul-text-decoration" >
@@ -55,6 +60,7 @@ const ItemAdd = () => {
              {/* item code input box */}
              <div >
                 <label
+                  id="itemCode"
                   htmlFor="itemCode"
                   className="block text-[15px] font-medium text-gray-700"
                 >
@@ -71,6 +77,7 @@ const ItemAdd = () => {
               {/* item Name input box */}
               <div >
                 <label
+                  id="itemName"
                   htmlFor="itemName"
                   className="block text-[15px] font-medium text-gray-700"
                 >
@@ -86,32 +93,46 @@ const ItemAdd = () => {
               {/* item Group input box */}
               <div className="relative" >
                 <label
+                  id="itemGroup"
                   htmlFor="itemGroup"
                   className="block text-[15px] font-medium text-gray-700"
                 >
                   Item Group <span className="text-red-500">*</span>
                 </label>
                 <input
+                    ref={inputRef}
                     value={groupInputValue}
                     onChange={(e) => setGroupInputValue(e.target.value)}
                     type="text"
                     id="itemGroup"
                     name="itemGode"
                     onFocus={() => setIsFocus(true)}
-                    // autoComplete="off"
-                    // onBlur={() => setIsFocus(false)}
+                    autoComplete="off"
+                    onBlur={() => {
+                        if(!isHoverd){
+                            setIsFocus(false);
+                        }
+                    }}
                     className="mt-1 block  w-full p-2 text-xs bg-[#f4f5f6] rounded-md shadow-sm focus:ring-none focus:outline-gray-300"
                     
                 />
                  {isFocus && (
-                  <div className="shadow-lg mt-1 text-[13px] flex flex-col gap-1 p-1 rounded-md w-full absolute bg-white">
+                  <div 
+                   onMouseEnter={() => {setIsHovered(true);}}
+                   onMouseLeave={() => {setIsHovered(false);}}
+                   className="shadow-lg mt-1 text-[13px] flex flex-col gap-1 p-1 rounded-md w-full absolute bg-white">
                     {groupSuggestions.map((groupSuggestion,index) => {
                            const isMatch = groupSuggestion.toLowerCase().indexOf(groupInputValue.toLowerCase()) > -1
                            return (
                               <div key={index}>
                                   {isMatch && (
                                      <div 
-                                       onClick={() => setGroupInputValue(groupSuggestion)}
+                                       onClick={() => {
+                                          setGroupInputValue(groupSuggestion);
+                                          inputRef.current.focus();
+                                          setIsFocus(() => !isFocus)
+                                          
+                                       }}
                                        className="p-2  cursor-pointer rounded-md hover:shadow-sm  hover:bg-[#f4f5f6]" >
                                        {groupSuggestion}
                                      </div>
@@ -119,12 +140,19 @@ const ItemAdd = () => {
                               </div>
                            )
                     })}
+                    <div  className="p-2 font-semibold flex items-center gap-1 text-[#408DFB]  cursor-pointer rounded-md hover:shadow-sm  hover:bg-[#f4f5f6]">
+                       <RiAddLine className="text-[18px]"  /> Create a new Item Group
+                    </div>
+                    <div  className="p-2 font-semibold flex items-center gap-1 text-[#408DFB] cursor-pointer rounded-md hover:shadow-sm  hover:bg-[#f4f5f6]">
+                    <BiSearch className="text-[18px]" /> Advanced Search
+                    </div>
                    </div>
                  )}
               </div>
               {/*Unit of measue input box */}
               <div >
                 <label
+                  id="unitMeasure"
                   htmlFor="defaultUnitOfMeasure"
                   className="block text-[15px] font-medium text-gray-700"
                 >
@@ -132,8 +160,8 @@ const ItemAdd = () => {
                 </label>
                 <input
                     type="text"
-                    id="itemCode"
-                    name="itemCode"
+                    id="unitMeasure"
+                    name="unitMeasure"
                     className="mt-1 block w-full p-2 text-xs bg-[#f4f5f6] rounded-md shadow-sm focus:ring-none focus:outline-gray-300"
                     placeholder="Nos"
                 />
@@ -162,6 +190,7 @@ const ItemAdd = () => {
                    <div >
                    {/*Openning stock input box */}
                   <label
+                    id="openingStock"
                     htmlFor="openingStock"
                     className="block text-[15px] font-medium text-gray-700"
                   >
@@ -181,6 +210,7 @@ const ItemAdd = () => {
               {/* Standard Selling Rate input box */}
               <div >
                 <label
+                  id="standardSellingRate"
                   htmlFor="standardSellingRate"
                   className="block text-[15px] font-medium text-gray-700"
                 >
@@ -215,6 +245,7 @@ const ItemAdd = () => {
                   <div >
                   {/* Asset Category input box */}
                   <label
+                    id="assetCategory"
                     htmlFor="assetCategory"
                     className="block text-[15px] font-medium text-gray-700"
                   >
