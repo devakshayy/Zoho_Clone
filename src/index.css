@@ -7,4 +7,9 @@
         @apply block text-[14px] px-4 py-1 rounded-sm 
         data-[focus]:bg-[#408DFB] data-[focus]:text-white 
     }
+    .itemadd-ul-text-decoration {
+        @apply cursor-pointer font-medium
+         underline decoration-[#3297f0]
+          underline-offset-8 decoration-1
+    }
 }

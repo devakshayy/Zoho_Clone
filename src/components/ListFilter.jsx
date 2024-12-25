@@ -3,6 +3,7 @@ import { FaAngleDown } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa6";
 import { HiDotsVertical } from "react-icons/hi";
 import { MdOutlineQuestionMark } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 
 
@@ -14,7 +15,7 @@ const ListFilter = ({location}) => {
   const  dropdownHeading = path.split("/").pop();;
 
   return (
-    <div className="h-[70px] py-4 pl-4 pr-8  bg-white border-b-2  flex items-center justify-between">
+    <div className="h-[70px] py-4 pl-4 pr-8  bg-white border-b-[1px]  flex items-center justify-between">
       <div>
         <Menu>
           <MenuButton className='font-semibold text-[20px] py-2 flex text-md items-center gap-1' >
@@ -80,9 +81,10 @@ const ListFilter = ({location}) => {
       </div>
 
       <div className=" flex items-center justify-between gap-2 ">
-          <button className="flex px-2 text-[15px] text-white py-[5px]  items-center justify-center bg-[#408DFB] rounded-sm ">
+           <Link to="/new" className="flex px-2 text-[15px] text-white py-[5px]  items-center justify-center bg-[#408DFB] rounded-sm " >        
              <FaPlus />New
-           </button>
+           </Link>
+         
            <button className="flex items-center justify-center p-[4px]  ring-1 rounded-sm  bg-[#f5f5f5]" >
              <HiDotsVertical />
            </button>
@@ -90,7 +92,6 @@ const ListFilter = ({location}) => {
       <button className="flex absolute text-white right-0 items-center justify-center py-[6px] px-[2px] rounded-l-sm bg-[#fc8f31]" >
              <MdOutlineQuestionMark />
       </button>      
-       
     </div>
   );
 };
