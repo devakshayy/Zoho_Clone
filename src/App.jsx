@@ -15,6 +15,7 @@ import ConfigureFeatureList from "./pages/ConfigureFeatureList";
 import Customers from "./pages/Customers";
 import Header from "./components/Header";
 import ListFilter from "./components/ListFilter";
+import ItemAdd from "./pages/ItemAdd";
 
 // important at the bottom don't forget to implemnt in the last
 
@@ -48,7 +49,7 @@ function AppContent() {
           <div>
             <Header />
           </div>
-          {shouldShowListFilter &&   <ListFilter/> }
+          {shouldShowListFilter &&   <ListFilter location={location} /> }
          
 
           <div className="flex-1 overflow-auto bg-white">
@@ -60,6 +61,7 @@ function AppContent() {
               {/* Pages */}
               <Route path="/customers" element={<Customers />} />
               <Route path="/items" element={<Item />} />
+              <Route path="/new" element={ <ItemAdd/> }/>
               <Route path="/quotes" element={<Quotes />} />
               <Route path="/deliverychellans" element={<DeliveryChellans />} />
               <Route path="/invoices" element={<Invoices />} />

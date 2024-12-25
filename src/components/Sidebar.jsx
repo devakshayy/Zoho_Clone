@@ -2,23 +2,12 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { TbHome } from "react-icons/tb";
 import { IoMdAdd } from "react-icons/io";
-import { links } from "../data/sidebarlinks.jsx";
 import { BsStars } from "react-icons/bs";
 import { MdKeyboardArrowRight } from "react-icons/md";
+import {links} from "../data/sidebarlinks"
 
 const Sidebar = () => {
-  // const menuOptions = (
-  //     <>
-
-  //       <div className='p-2 bg-slate-600 text-white flex justify-center rounded-sm mb-2'>customer</div>
-  //       <div className='p-2 bg-slate-600 text-white flex justify-center rounded-sm mb-2' >Item</div>
-
-  //       <div className='p-2 bg-slate-600 text-white flex justify-center rounded-sm mb-2' >Quotes</div>
-  //       <div className='p-2 bg-slate-600 text-white flex justify-center rounded-sm mb-2' >Quotes</div>
-
-  //       {/* List....  */}
-  //     </>
-  // );
+  
   return (
     <div
       className="min-h-screen bg-[#21263c] 
