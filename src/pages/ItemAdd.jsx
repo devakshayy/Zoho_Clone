@@ -20,7 +20,7 @@ const ItemAdd = () => {
         setMaintainStockChek(!maintainStockChek);
     }
 
-    const fixedAssetChekHandle = () => {
+    const fixedAssetChekHandle = () => {    
          setfixedAssetChek(!fixedAssetChek);
     }
 
@@ -98,7 +98,8 @@ const ItemAdd = () => {
                     id="itemGroup"
                     name="itemGode"
                     onFocus={() => setIsFocus(true)}
-                    onBlur={() => setIsFocus(false)}
+                    // autoComplete="off"
+                    // onBlur={() => setIsFocus(false)}
                     className="mt-1 block  w-full p-2 text-xs bg-[#f4f5f6] rounded-md shadow-sm focus:ring-none focus:outline-gray-300"
                     
                 />
@@ -110,7 +111,8 @@ const ItemAdd = () => {
                               <div key={index}>
                                   {isMatch && (
                                      <div 
-                                       className="p-2 rounded-md hover:shadow-sm  hover:bg-[#f4f5f6]" >
+                                       onClick={() => setGroupInputValue(groupSuggestion)}
+                                       className="p-2  cursor-pointer rounded-md hover:shadow-sm  hover:bg-[#f4f5f6]" >
                                        {groupSuggestion}
                                      </div>
                                   )}
