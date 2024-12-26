@@ -10,17 +10,16 @@ import { IoApps } from "react-icons/io5";
 import { Tooltip } from "react-tooltip";
 import { SiZorin } from "react-icons/si";
 
-
 const Header = () => {
   const [show, setShow] = useState(false);
 
   const iconChangeHandle = () => {
     setShow((show) => !show);
-  }
-  
+  };
+
   return (
-    <div className="flex mt-0 ml-0 p-2 justify-between  items-center h-[48px] border border-b-1 border-[#e5e6ef] bg-[#f7f7fe]">
-      <div className="flex gap-2 items-center text-black">
+    <div className="flex justify-between items-center p-2 h-[48px] border border-b-1 border-[#e5e6ef] bg-[#f7f7fe]">
+      <div className="flex gap-2  items-center text-black">
         <div className="flex items-center gap-4">
           <PiClockClockwiseLight />
           <div className="relative">
@@ -29,25 +28,25 @@ const Header = () => {
               name="search"
               type="text"
               placeholder="Search in Customers ( / )"
-              className="pl-8 bg-[#ededf7] rounded-md
+              className="pl-5 lg:pl-8 bg-[#ededf7] rounded-md
                        outline-none hover:border border-[#e5e6ef] hover:border-blue-300 
-                       placeholder:text-xs w-[350px]  hover:w-[400px] focus:w-[400px]
+                       placeholder:text-[13px] lg:placeholder:text-xs  w-[180px] lg:w-[350px]  lg:hover:w-[400px] lg:focus:w-[400px]
                        hover:ease-out duration-300 text-xs py-[7px]"
             />
-            <GoSearch className="absolute top-1/2 left-1  transform -translate-y-1/2" />
+            <GoSearch className="absolute top-1/2 left-1 text-xs lg:text-sm transform -translate-y-1/2" />
           </div>
         </div>
       </div>
-      <div className="flex gap-4 items-center text-black">
+      <div className="flex gap-2 lg:gap-4 items-center  text-black">
         <div className="flex items-center text-xs gap-1">
           company
           <IoIosArrowDown />
         </div>
-        <div className="text-white bg-[#408dfb] p-1 rounded-sm">
+        <div className="text-white text-xs bg-[#408dfb] p-1 rounded-sm">
           <GoPlus />
         </div>
-        <VscBell />
-        <a id="my-anchor-element-id">
+        <VscBell className="" />
+        <a id="my-anchor-element-id" className="text-xs">
           <IoSettingsOutline />
         </a>
         <Tooltip
@@ -58,15 +57,18 @@ const Header = () => {
             </div>
           }
         />
-        <HiOutlineUserCircle className="w-7 h-7" />
-         {show? <SiZorin
-                    className="transform transition-all duration-300"
-                    onMouseLeave={iconChangeHandle} /> 
-               :
-          <IoApps 
-                className="transform transition-all duration-300" 
-                onMouseEnter={iconChangeHandle} />}
-
+        <HiOutlineUserCircle className=" text-xl " />
+        {show ? (
+          <SiZorin
+            className="transform text-xs transition-all duration-300"
+            onMouseLeave={iconChangeHandle}
+          />
+        ) : (
+          <IoApps
+            className="transform text-xs transition-all duration-300"
+            onMouseEnter={iconChangeHandle}
+          />
+        )}
       </div>
     </div>
   );
