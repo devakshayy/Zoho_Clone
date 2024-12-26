@@ -34,21 +34,21 @@ const Home = () => {
           <div className="flex pb-[5px] gap-2">
             <Link
               className="text-xs focus:underline
-                       underline-offset-8 decoration-4
+                       underline-offset-6 decoration-4
                        decoration-[#408dfb]"
             >
               Dashboard
             </Link>
             <Link
               className="text-xs focus:underline
-                      underline-offset-8 decoration-4 
+                      underline-offset-6 decoration-4 
                     decoration-[#408dfb]"
             >
               Announcements
             </Link>
             <Link
               className="text-xs focus:underline 
-                      underline-offset-8 decoration-4
+                      underline-offset-6 decoration-4
                      decoration-[#408dfb]"
             >
               Recent Updates
