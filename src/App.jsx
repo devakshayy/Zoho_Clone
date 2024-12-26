@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Home from "./pages/Home";
@@ -20,7 +20,7 @@ import ItemAdd from "./pages/ItemAdd";
 // important at the bottom don't forget to implemnt in the last
 
 function AppContent() {
-
+  const [sidesShow, setSideShow] = useState(false);
   const location = useLocation();
   
   const excludedRoutes = [
@@ -38,13 +38,21 @@ function AppContent() {
       <div className="flex h-screen bg-gray-200 text-gray-800 overflow-hidden">
 
         {/* Sidebar */}
-        <div className="w-[200px]  fixed h-full bg-gray-800 text-white">
-          <Sidebar />
+        <div 
+          className={`${
+            !sidesShow ? "w-[200px]" : "w-[70px]"
+          } fixed min-h-screen overflow-auto bg-gray-800 text-white transition-width duration-300`}
+        >
+          <Sidebar sidesShow={sidesShow} setSideShow={setSideShow} />
         </div>
 
         {/* Right-side content */}
 
-        <div className="flex flex-col ml-[200px] w-full h-screen">
+        <div 
+           className={`flex flex-col ${
+            !sidesShow ? "ml-[200px]" : "ml-[70px]"
+          } w-full h-screen transition-margin duration-300`}
+        >
           {/* Header */}
           <div>
             <Header />

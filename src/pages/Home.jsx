@@ -21,7 +21,7 @@ const Home = () => {
         className="w-full  h-[130px] pt-3 px-2 bg-white border-b-2 sticky top-0 flex flex-col justify-between"
         style={sectionStyle}
       >
-        <div className="flex items-center px-1  w-[200px] gap-2">
+        <div className="flex items-center px-1 w-[200px] gap-2">
           <div className="bg-white p-1 flex items-center justify-center ring-1 rounded-sm w-7 h-7">
             <PiBuildingsThin />
           </div>
