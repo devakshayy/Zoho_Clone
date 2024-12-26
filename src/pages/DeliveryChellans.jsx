@@ -23,8 +23,8 @@ const DeliveryChellans = () => {
            </div>
       </div>
       {/* Delivery chellan create div end */}
-      <div className='flex flex-col gap-8 items-center bg-[#f9f9fb] pt-[20px] pb-[45px]'>
-          <div>Life cycle of Quote</div>
+      <div className='flex flex-col gap-8 items-center bg-[#f9f9fb] pt-[30px] pb-[45px]'>
+          <div className='text-xs' >Life cycle of a Delivery Challan</div>
           <div> 
             <img src="/deliverychallanworkflow.png" alt="deliverychallanworkflow" />
           </div>
