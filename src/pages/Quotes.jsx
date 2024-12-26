@@ -1,4 +1,3 @@
-import React from 'react'
 import videoTumbnail from '/video-thumbnail.png'
 import { SiTicktick } from "react-icons/si";
 
@@ -45,8 +44,8 @@ const Quotes = () => {
      </div>
 
      {/* The Quotes workflw start */}
-     <div className='flex flex-col gap-8 items-center bg-[#f9f9fb] pt-[20px] pb-[45px]'>
-          <div>Life cycle of Quote</div>
+     <div className='flex flex-col gap-8 items-center bg-[#f9f9fb] pt-[30px] pb-[45px]'>
+          <div className='text-xs'>Life cycle of Quote</div>
           <div> 
             <img src="/quotes-workflow.png" alt="quotesworkflow" />
           </div>
