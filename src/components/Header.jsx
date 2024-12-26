@@ -25,6 +25,8 @@ const Header = () => {
           <PiClockClockwiseLight />
           <div className="relative">
             <input
+              id="search"
+              name="search"
               type="text"
               placeholder="Search in Customers ( / )"
               className="pl-8 bg-[#ededf7] rounded-md
