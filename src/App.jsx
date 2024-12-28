@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Home from "./pages/Home";
 import Quotes from "./pages/Quotes";
@@ -10,17 +10,45 @@ import Expenses from "./pages/Expenses";
 import Timetracking from "./pages/Timetracking";
 import Reports from "./pages/Reports";
 import Advancedbilling from "./pages/Advancedbilling";
-import Item from "./pages/Item";
+import ItemList from "./pages/ItemList";
 import ConfigureFeatureList from "./pages/ConfigureFeatureList";
 import Customers from "./pages/Customers";
 import Header from "./components/Header";
 import ListFilter from "./components/ListFilter";
-import ItemAdd from "./pages/ItemAdd";
+import ItemAddForm from "./pages/ItemAddForm";
+import AddCus from "./pages/AddCus";
+import ItemView from "./pages/ItemView";
 
 // important at the bottom don't forget to implemnt in the last
 
 function AppContent() {
+  const navigate = useNavigate();
   const [sidesShow, setSideShow] = useState(false);
+  const [rowToEdit, setRowToEdit] = useState(null);
+  const [rows, setRows] = useState([{
+    code: "##11",
+    barcode: "123422123",
+    name: "Lux",
+    category: "Beauty",
+    brand: "LUX",
+    purchaserate: "35",
+    openingqty: "1000",
+    salerate:"40",
+}]);
+  
+  const handleAddNewRow = (newRow) => {
+    setRows([...rows, newRow])
+  }
+
+  const handleDeleteRow = (targetIdx) => {
+     setRows(rows.filter((__,idx) => idx !== targetIdx))
+  }
+  
+  const handleEditRow = (idx) => {
+      setRowToEdit(idx);
+      navigate("/itemview")
+  }
+
   const location = useLocation();
   
   const excludedRoutes = [
@@ -68,8 +96,10 @@ function AppContent() {
 
               {/* Pages */}
               <Route path="/customers" element={<Customers />} />
-              <Route path="/items" element={<Item />} />
-              <Route path="/new" element={ <ItemAdd/> }/>
+              <Route path="/items" element={<ItemList rows={rows} deleteRow={handleDeleteRow} handleEditRow={handleEditRow} />} />
+              <Route path="/newitem" element={ <AddCus /> }/>
+              <Route path="/new" element={ <ItemAddForm handleAddNewRow={handleAddNewRow} /> }/>
+              <Route path="/itemview" element={ <ItemView rows={rows} /> } />
               <Route path="/quotes" element={<Quotes />} />
               <Route path="/deliverychellans" element={<DeliveryChellans />} />
               <Route path="/invoices" element={<Invoices />} />
