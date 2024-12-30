@@ -35,10 +35,23 @@ const ItemAddForm = ({handleAddNewRow}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(!validateForm()) return
-    handleAddNewRow(formState)
-    navigate('/items');
-    console.log(formState);
+    if (!validateForm()) return;
+
+    const timestamp = new Date();
+    const formattedDate = timestamp.toLocaleString("en-IN", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true,
+    });
+    const newFormState = {
+      ...formState,
+      createdAt: formattedDate,
+    };
+    handleAddNewRow(newFormState);
+    navigate("/items");
   };
 
   return (

@@ -4,7 +4,7 @@ import { FaRegEye } from "react-icons/fa";
 
 
 
-const ItemList = ({rows,deleteRow,handleEditRow}) => {
+const ItemList = ({rows,deleteRow,handleOnPreview}) => {
   return (
     <>
       <div className="bg-[#f9f9fb] p-2 text-xs flex gap-40 items-center">
@@ -25,7 +25,7 @@ const ItemList = ({rows,deleteRow,handleEditRow}) => {
           <tbody>
 
             {rows.map((row,idx) => {
-              return <tr key={idx}  className="odd:bg-white even:bg-gray-100">
+              return <tr key={idx} className="odd:bg-white even:bg-gray-100">
               <td className="p-2">{row.code}</td>
               <td className="p-2">{row.barcode}</td>
               <td className="p-2">{row.name}</td>
@@ -36,7 +36,7 @@ const ItemList = ({rows,deleteRow,handleEditRow}) => {
               <td className="p-2">{row.salerate}</td>
               <td className="p-2 flex justify-evenly">
                 < MdOutlineDelete onClick={() => deleteRow(idx)} className="text-sm cursor-pointer" />
-                < FaRegEye onClick={() => handleEditRow(idx)} className="text-sm cursor-pointer" />
+                < FaRegEye onClick={() => handleOnPreview(idx)} className="text-sm cursor-pointer" />
               </td>
             </tr>
             })}

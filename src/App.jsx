@@ -24,7 +24,7 @@ import ItemView from "./pages/ItemView";
 function AppContent() {
   const navigate = useNavigate();
   const [sidesShow, setSideShow] = useState(false);
-  const [rowToEdit, setRowToEdit] = useState(null);
+  const [itemPreview, setItemPreview] = useState([]);
   const [rows, setRows] = useState([{
     code: "##11",
     barcode: "123422123",
@@ -34,6 +34,7 @@ function AppContent() {
     purchaserate: "35",
     openingqty: "1000",
     salerate:"40",
+    createdAt: " ",
 }]);
   
   const handleAddNewRow = (newRow) => {
@@ -44,11 +45,15 @@ function AppContent() {
      setRows(rows.filter((__,idx) => idx !== targetIdx))
   }
   
-  const handleEditRow = (idx) => {
-      setRowToEdit(idx);
-      navigate("/itemview")
-  }
-
+  const handleOnPreview = (targetIdx) => {
+    setItemPreview(rows.filter((_,idx) => idx == targetIdx ));
+    navigate("/itemview") 
+  };
+  // const handleEditRow = (idx) => {
+  //     setRowToEdit(idx);
+  //     navigate("/itemview")
+  // }
+  console.log(rows)
   const location = useLocation();
   
   const excludedRoutes = [
@@ -96,10 +101,10 @@ function AppContent() {
 
               {/* Pages */}
               <Route path="/customers" element={<Customers />} />
-              <Route path="/items" element={<ItemList rows={rows} deleteRow={handleDeleteRow} handleEditRow={handleEditRow} />} />
+              <Route path="/items" element={<ItemList rows={rows} deleteRow={handleDeleteRow} handleOnPreview={handleOnPreview} />} />
               <Route path="/newitem" element={ <AddCus /> }/>
               <Route path="/new" element={ <ItemAddForm handleAddNewRow={handleAddNewRow} /> }/>
-              <Route path="/itemview" element={ <ItemView rows={rows} /> } />
+              <Route path="/itemview" element={ <ItemView itemPreview={itemPreview} /> } />
               <Route path="/quotes" element={<Quotes />} />
               <Route path="/deliverychellans" element={<DeliveryChellans />} />
               <Route path="/invoices" element={<Invoices />} />
